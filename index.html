@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Psychic Game</title>
+	<link rel="stylesheet" type="text/css" href="css/reset.css">
+
+	<link href="https://getbootstrap.com/docs/4.0/examples/sticky-footer/sticky-footer.css" rel="stylesheet">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+
+	<link href="https://fonts.googleapis.com/css?family=Aguafina+Script|Fondamento" rel="stylesheet">
+</head>
+<body>
+	<h1>The Psychic Game</h1>
+	<img src="images/dice.jpg" alt="Dice divination." width="250" height="250">
+	<br>
+	<ul id="instructions">
+		<li>- Guess the randomly generated letter</li>
+		<li>- You have nine chances in each round</li>
+	</ul>
+	<br>
+	<div id="flex-box">
+		<div id="game-text">
+			<ul class="game-list">
+				<li>Wins:</li>
+				<li>Losses:</li>
+				<li>Guesses left:</li>
+				<li>Your guesses:</li>
+			</ul>
+		</div>
+		<div id="game-data">
+			<ul class="game-list">
+				<li id="wins">-</li>
+				<li id="losses">-</li>
+				<li id="guess-count">-</li>
+				<li id="guess-history">-</li>
+			</ul>
+		</div>
+	</div>
+	
+	<br>
+	<div class="text-center">
+	<button type="button" class="btn btn-secondary" id="refresh-btn">Refresh</button>
+	</div>
+	<br><br><br><br><br>
+
+    <footer class="footer">
+    	<div class="container text-center">
+    		<span class="text-muted col-xs-12 text-nowrap">© Copywrite 2017 Victor Fisher</span>
+    	</div>
+    </footer>
+
+	<script type="text/javascript" src="javascript/game.js"></script>
+</body>
+</html>
