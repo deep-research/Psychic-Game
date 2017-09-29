@@ -7,7 +7,7 @@ refreshBtn.addEventListener("click", function refreshPg() {
 // Intialize variables
 var winCount = 0;
 var lossCount = 0;
-var guessesLeft = 8;
+var guessesLeft = 9;
 var guessList = [];
 
 var guessCount = document.getElementById("guess-count");
@@ -20,24 +20,12 @@ function randLetter() {
     var letter = letters[Math.floor(Math.random() * letters.length)];
     return letter;
 };
-// var aLetter = randLetter();
-// console.log("created aLetter: " + aLetter)
-var theLetter = randLetter();
-console.log("created theLetter: " + theLetter)
-// var apple = 5;
+var theLetter = randLetter()
 
 document.onkeydown = function(event) {
-	console.log("theLetter inside keydown " + theLetter);
-	// console.log(apple)
-	// console.log("aLetter inside keydown: " + aLetter);
-	console.log(event.keyCode);
 	var userKey = event.key;
-
 	if (event.keyCode >= 65 && event.keyCode <= 90) {
-
 		userKey = (event.key).toLowerCase();
-		console.log("userKey: " + userKey)
-		console.log("theLetter: " + theLetter)
 
 		//if they guess the right letter
 		if (userKey == theLetter) {
@@ -46,38 +34,41 @@ document.onkeydown = function(event) {
 			winWrite.innerHTML = winCount;
 			guessList = [];
 			theLetter = randLetter();
-			console.log(theLetter);
-			guessesLeft = 8;
+			guessesLeft = 9;
 			guessCount.innerHTML = guessesLeft;
 			guessHistory.innerHTML = "-";
 		} 
 	 	else {
-
+	 		// On the first guess
 			if (guessList.length == 0) {
-				console.log("guesslist.length == 0")
 				guessList.push(userKey);
-				// guessHistory.innerHTML = guessList;
-				// guessesLeft = 8;
-				// guessCount.innerHTML = guessesLeft;
-
-			} 
-			else if (guessList.length <= 7) {
-				console.log("guessList.length <= 8")
+				guessHistory.innerHTML = guessList;
+				guessesLeft--;
+				guessCount.innerHTML = guessesLeft;
+			}
+			// More chances
+			else if (guessList.length < 8) {
 				guessList.push(userKey);
-				// guessHistory.innerHTML = guessList.join(', ');
-				// guessesLeft--;
-				// guessCount.innerHTML = guessesLeft;
+				guessHistory.innerHTML = guessList.join(', ');
+				guessesLeft--;
+				guessCount.innerHTML = guessesLeft;
 			} 
-			// player loses
+			// Player looses
 			else if (guessList.length == 8) {
-				console.log("guessList.length == 8 YOU LOST")
-				// guessList = [];
-				// var theLetter = randLetter();
-				// console.log(theLetter);
 				guessList.push(userKey);
-				// guessHistory.innerHTML = guessList;
-				// guessesLeft = 8;
-				// guessCount.innerHTML = guessesLeft;
+				guessHistory.innerHTML = guessList.join(', ');
+				guessesLeft--;
+				guessCount.innerHTML = guessesLeft;
+
+				alert("You lost!");
+				lossCount++;
+				lossWrite.innerHTML = lossCount;
+				guessList = [];
+				guessHistory.innerHTML = guessList;
+				theLetter = randLetter();
+				guessesLeft = 9;
+				guessCount.innerHTML = guessesLeft;
+				guessHistory.innerHTML = "-";
 			}
 		}
 	}
